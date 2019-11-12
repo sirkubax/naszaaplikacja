@@ -11,3 +11,6 @@ python aplikacja.py
 Example apache wsgi:
  - naszaaplikacja.wsgi
  - vserver configuration naszaaplikacja.apache.conf
+
+#TODO 
+instrukcja wgrania recznego dla apache2

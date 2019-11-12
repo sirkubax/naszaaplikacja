@@ -1,15 +1,18 @@
 from flask import Flask, render_template
 app = Flask(__name__)
+import ConfigParser
+
 
 @app.route("/")
 def main():
     #return "Dzien dobry!"
-    zmienne = { 'aaa': 'kropeczka' }
+    zmienne = { 'aaa': 'kropeczka', 'kolejny_parametr': 1234567 }
     return render_template('index.html', zmienne=zmienne)
+
 
 @app.route('/index')
 def index():
-    user = {'username': 'Miguel'}
+    user = {'username': nazwa}
     return '''
     <html>
         <head>
@@ -22,4 +25,8 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run()
+    config = ConfigParser.ConfigParser()
+    config.read('config.cfg')
+    port = config.get('config', 'port')
+    nazwa = config.get('config', 'nazwa')
+    app.run(host='0.0.0.0', port=port)
