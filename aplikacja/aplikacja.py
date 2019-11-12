@@ -26,7 +26,15 @@ def index():
 
 if __name__ == "__main__":
     config = ConfigParser.ConfigParser()
-    config.read('config.cfg')
+    try:
+        config.read('config.cfg')
+        print ('czytam konfiguracje glowna')
+        port = config.get('config', 'port')
+    except:
+        print ('czytam konfiguracje przykladowa')
+        config.read('config.cfg.example')
+
     port = config.get('config', 'port')
     nazwa = config.get('config', 'nazwa')
+
     app.run(host='0.0.0.0', port=port)

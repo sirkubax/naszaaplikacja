@@ -2,14 +2,14 @@
     ServerAdmin webmaster@szkolenie.pl
     ServerName www.szkolenie.pl
     ServerAlias szkolenie.pl
-    ErrorLog /var/www/szkolenie.pl/logs/error.log
-    CustomLog /var/www/szkolenie.pl/logs/access.log combined
+    ErrorLog /var/www/szkolenie/logs/error.log
+    CustomLog /var/www/szkolenie/logs/access.log combined
 
     WSGIDaemonProcess naszaaplikacja user=www-data group=www-data threads=5
     WSGIProcessGroup naszaaplikacja
-    WSGIScriptAlias / /var/www/FLASKAPPS/naszaaplikacja/naszaaplikacja.wsgi
-    Alias /static/ /var/www/FLASKAPPS/naszaaplikacja/static
-    <Directory /var/www/FLASKAPPS/naszaaplikacja/static>
+    WSGIScriptAlias / /var/www/szkolenie/aplikacja/naszaaplikacja.wsgi
+    Alias /static/ /var/www/szkolenie/aplikacja/static
+    <Directory /var/www/szkolenie/aplikacja/static>
         Options FollowSymLinks
         AllowOverride None
         Require all granted
