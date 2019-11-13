@@ -6,4 +6,4 @@ with open(activate_this) as file_:
 
 import sys
 sys.path.insert(0,"/var/www/szkolenie")
-from helloworldapp import app as application
+from aplikacja import app as application

@@ -2,6 +2,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 import ConfigParser
 
+naszconfig = {}
 
 @app.route("/")
 def main():
@@ -12,7 +13,8 @@ def main():
 
 @app.route('/index')
 def index():
-    user = {'username': nazwa}
+    global naszconfig
+    user = {'username': naszconfig['nazwa']}
     return '''
     <html>
         <head>
@@ -24,7 +26,8 @@ def index():
     </html>'''
 
 
-if __name__ == "__main__":
+def read_config():
+    global naszconfig
     config = ConfigParser.ConfigParser()
     try:
         config.read('config.cfg')
@@ -33,8 +36,14 @@ if __name__ == "__main__":
     except:
         print ('czytam konfiguracje przykladowa')
         config.read('config.cfg.example')
+    naszconfig['port'] = config.get('config', 'port')
+    naszconfig['nazwa'] = config.get('config', 'nazwa')
+    print naszconfig
 
-    port = config.get('config', 'port')
-    nazwa = config.get('config', 'nazwa')
 
-    app.run(host='0.0.0.0', port=port)
+
+if __name__ == "__main__":
+
+    read_config()
+
+    app.run(host='0.0.0.0', port=naszconfig['port'])
