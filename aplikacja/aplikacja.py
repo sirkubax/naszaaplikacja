@@ -27,7 +27,9 @@ def index():
 
 def read_config():
     import os
-    current_dir = os.getcwd()
+    current_file = os.path.abspath(__file__)
+    current_dir = os.path.dirname(current_file)
+    print (current_dir)
     naszconfig = {}
     config = ConfigParser.ConfigParser()
     try:
