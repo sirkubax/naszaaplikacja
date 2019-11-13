@@ -27,15 +27,17 @@ def index():
 
 
 def read_config():
+    import os
+    current_dir = os.getcwd()
     global naszconfig
     config = ConfigParser.ConfigParser()
     try:
-        config.read('config.cfg')
+        config.read(os.path.join(current_dir, 'config.cfg'))
         print ('czytam konfiguracje glowna')
         port = config.get('config', 'port')
     except:
         print ('czytam konfiguracje przykladowa')
-        config.read('config.cfg.example')
+        config.read(os.path.join(current_dir, 'config.cfg.example'))
     naszconfig['port'] = config.get('config', 'port')
     naszconfig['nazwa'] = config.get('config', 'nazwa')
     print naszconfig
