@@ -2,3 +2,8 @@
 port = 5001
 nazwa = szkolenie
 
+mysql:
+  port: 3306
+  username: szkoelnie
+  pass: 1234
+  dbname: szkolenie
