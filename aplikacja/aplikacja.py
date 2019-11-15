@@ -2,6 +2,18 @@ from flask import Flask, render_template
 app = Flask(__name__)
 import ConfigParser
 
+@app.route("/db/zapisz/<zmienna>/<wartosc>")
+def zapisz():
+    return '''
+    <html>
+        <head>
+            <title>Home Page - Microblog</title>
+        </head>
+        <body>
+            <h1>{{ zmienna }} {{ wartosc }} '''!</h1>
+        </body>
+    </html>'''
+
 
 @app.route("/")
 def main():
