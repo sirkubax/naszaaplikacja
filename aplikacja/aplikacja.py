@@ -14,6 +14,18 @@ def zapisz(zmienna, wartosc):
         </body>
     </html>'''
 
+@app.route("/db/pobierz/<zmienna>")
+def zapisz(zmienna, wartosc):
+    return '''
+    <html>
+        <head>
+            <title>Home Page - Microblog</title>
+        </head>
+        <body>
+            <h1>''' + zmienna + ''' db communication in development!</h1>
+        </body>
+    </html>'''
+
 
 @app.route("/")
 def main():
