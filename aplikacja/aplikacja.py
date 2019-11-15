@@ -3,14 +3,14 @@ app = Flask(__name__)
 import ConfigParser
 
 @app.route("/db/zapisz/<zmienna>/<wartosc>")
-def zapisz():
+def zapisz(zmienna, wartosc):
     return '''
     <html>
         <head>
             <title>Home Page - Microblog</title>
         </head>
         <body>
-            <h1>{{ zmienna }} {{ wartosc }} '''!</h1>
+            <h1>''' + zmienna + ': ' + wartosc + '''!</h1>
         </body>
     </html>'''
 
