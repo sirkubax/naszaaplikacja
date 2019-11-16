@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 app = Flask(__name__)
 import ConfigParser
-from flask.ext.mysql import MySQL
+from flaskext.mysql import MySQL
 
 @app.route("/db/zapisz/<zmienna>/<wartosc>")
 def zapisz(zmienna, wartosc):
