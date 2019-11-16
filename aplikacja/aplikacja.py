@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 app = Flask(__name__)
 import ConfigParser
+from flask.ext.mysql import MySQL
 
 @app.route("/db/zapisz/<zmienna>/<wartosc>")
 def zapisz(zmienna, wartosc):
@@ -15,7 +16,7 @@ def zapisz(zmienna, wartosc):
     </html>'''
 
 @app.route("/db/pobierz/<zmienna>")
-def zapisz(zmienna, wartosc):
+def pobierz(zmienna):
     return '''
     <html>
         <head>
@@ -72,5 +73,20 @@ def read_config():
 if __name__ == "__main__":
 
     naszconfig = read_config()
+
+    mysql = MySQL()
+     
+    # MySQL configurations
+    app.config['MYSQL_DATABASE_USER'] = 'jay'
+    app.config['MYSQL_DATABASE_PASSWORD'] = 'jay'
+    app.config['MYSQL_DATABASE_DB'] = 'BucketList'
+    app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+    #mysql.init_app(app)
+    #conn = mysql.connect()
+
+    #cur = mysql.connection.cursor()
+    #cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
+    #mysql.connection.commit()
+    #cur.close()
 
     app.run(host='0.0.0.0', port=naszconfig['port'])
