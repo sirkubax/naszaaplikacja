@@ -5,6 +5,8 @@ from flaskext.mysql import MySQL
 
 @app.route("/db/zapisz/<zmienna>/<wartosc>")
 def zapisz(zmienna, wartosc):
+    naszconfig = read_config()
+    host =  naszconfig['host']
     return '''
     <html>
         <head>
@@ -12,11 +14,14 @@ def zapisz(zmienna, wartosc):
         </head>
         <body>
             <h1>''' + zmienna + ': ' + wartosc + '''!</h1>
+            <br> Host: ''' + host + '''
         </body>
     </html>'''
 
 @app.route("/db/pobierz/<zmienna>")
 def pobierz(zmienna):
+    naszconfig = read_config()
+    host =  naszconfig['host']
     return '''
     <html>
         <head>
@@ -24,6 +29,7 @@ def pobierz(zmienna):
         </head>
         <body>
             <h1>''' + zmienna + ''' db communication in development!</h1>
+            <br> Host: ''' + host + '''
         </body>
     </html>'''
 
@@ -38,14 +44,16 @@ def main():
 @app.route('/index')
 def index():
     naszconfig = read_config()
-    user = {'username': naszconfig['nazwa']}
+    nazwa = {'nazwa': naszconfig['nazwa']}
+    host =  naszconfig['host']
     return '''
     <html>
         <head>
             <title>Home Page - Microblog</title>
         </head>
         <body>
-            <h1>Hello, ''' + user['username'] + '''!</h1>
+            <h1>Env, ''' + nazwa['nazwa'] + '''!</h1>
+            <br> Host: ''' + host + '''
         </body>
     </html>'''
 
@@ -66,6 +74,7 @@ def read_config():
         config.read(os.path.join(current_dir, 'config.cfg.example'))
     naszconfig['port'] = config.get('config', 'port')
     naszconfig['nazwa'] = config.get('config', 'nazwa')
+    naszconfig['host'] = config.get('config', 'host')
     return naszconfig
 
 

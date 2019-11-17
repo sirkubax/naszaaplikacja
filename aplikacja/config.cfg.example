@@ -1,6 +1,7 @@
 [config]
 port = 5001
 nazwa = szkolenie
+host = serwerUS.com
 
 mysql:
   port: 3306
