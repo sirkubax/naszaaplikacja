@@ -5,6 +5,7 @@ host = serwerUS.com
 
 mysql:
   port: 3306
-  username: szkoelnie
-  pass: 1234
-  dbname: szkolenie
+  username: szkoelnie_user
+  pass: secret123
+  dbname: szkolenie_db
+  host: 3.10.56.182

@@ -6,7 +6,9 @@ from flaskext.mysql import MySQL
 @app.route("/db/zapisz/<zmienna>/<wartosc>")
 def zapisz(zmienna, wartosc):
     naszconfig = read_config()
-    host =  naszconfig['host']
+    host = naszconfig['host']
+    db = naszconfig['mysql']
+    print(db)
     return '''
     <html>
         <head>
@@ -15,12 +17,13 @@ def zapisz(zmienna, wartosc):
         <body>
             <h1>''' + zmienna + ': ' + wartosc + '''!</h1>
             <br> Host: ''' + host + '''
+            <br> DB: ''' + db.split()[3] + '''
         </body>
     </html>'''
 
 @app.route("/db/pobierz/<zmienna>")
 def pobierz(zmienna):
-    naszconfig = read_config()
+    naszconfig = read_config() 
     host =  naszconfig['host']
     return '''
     <html>
@@ -75,6 +78,7 @@ def read_config():
     naszconfig['port'] = config.get('config', 'port')
     naszconfig['nazwa'] = config.get('config', 'nazwa')
     naszconfig['host'] = config.get('config', 'host')
+    naszconfig['mysql'] = config.get('config', 'mysql')
     return naszconfig
 
 

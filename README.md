@@ -2,6 +2,7 @@
 Example flask app for Ansible deployment trainings
 
 ```
+#sklonuj aplikacje do /var/www/szkolenie
 cd aplikacja
 source environment.sh 
 python aplikacja.py 
@@ -10,7 +11,7 @@ python aplikacja.py
 
 Example apache wsgi:
  - naszaaplikacja.wsgi
- - vserver configuration naszaaplikacja.apache.conf
+ - apache2 VirtualHost configuration naszaaplikacja.apache.conf
 
 #TODO 
 instrukcja wgrania recznego dla apache2
