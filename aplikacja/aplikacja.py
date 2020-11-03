@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 app = Flask(__name__)
-import ConfigParser
+import configparser
 from flaskext.mysql import MySQL
 
 @app.route("/db/zapisz/<zmienna>/<wartosc>")
@@ -67,7 +67,7 @@ def read_config():
     current_dir = os.path.dirname(current_file)
     print (current_dir)
     naszconfig = {}
-    config = ConfigParser.ConfigParser()
+    config = configparser.ConfigParser()
     try:
         config.read(os.path.join(current_dir, 'config.cfg'))
         print ('czytam konfiguracje glowna')

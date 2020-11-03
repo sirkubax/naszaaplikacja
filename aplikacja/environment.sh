@@ -4,7 +4,7 @@ export ROOT_DIR="$(readlink -m $(readlink -m "$(dirname "${BASH_SOURCE[0]}")"))"
 if [ -z "$VIRTUAL_ENV" ]; then
   if ! [ -d $ROOT_DIR/venv ]; then
     echo '-- No virtualenv detected; creating'
-    virtualenv $ROOT_DIR/venv || (echo '!!! virtualenv creation failed' && return)
+    virtualenv $ROOT_DIR/venv --python=python3 || (echo '!!! virtualenv creation failed' && return)
     __venv_created=true
   fi
   source $ROOT_DIR/venv/bin/activate
